@@ -77,7 +77,6 @@ class GPS:
     def print_gps_time(self):
         print("GPS Time: "+str(self.get_gps_time()))
 
-
     def get_gps_altitude(self):
         self.ser.write(self.GPSStart)
         time.sleep(0.5)
