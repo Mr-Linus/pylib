@@ -4,7 +4,6 @@ import serial
 
 class GPRS:
 
-
     # define Serial
     ser = serial.Serial("/dev/ttyS0", 115200)
     # define AT command
@@ -20,7 +19,7 @@ class GPRS:
         self.ser.write(command)
         time.sleep(1)
 
-    def signal_quality(self):
+    def get_signal_quality(self):
         self.run_at(self.q_signal_quality)
         while True:
             line = self.ser.readline().decode()
@@ -29,10 +28,10 @@ class GPRS:
                 break
         return result
 
-    def get_signal_quality(self):
-        print("GPRS signal Quality: "+str(self.signal_quality()))
+    def print_signal_quality(self):
+        print("GPRS signal Quality: "+str(self.get_signal_quality()))
 
-    def network_register(self):
+    def get_network_register(self):
         self.run_at(self.q_network_register)
         while True:
             line = self.ser.readline().decode()
@@ -41,10 +40,10 @@ class GPRS:
                 break
         return result
 
-    def get_network_register(self):
-        print("Network Registration: "+str(self.network_register()))
+    def print_network_register(self):
+        print("Network Registration: "+str(self.get_network_register()))
 
-    def attach_network(self):
+    def get_attach_network(self):
         self.run_at(self.q_attach_network)
         while True:
             line = self.ser.readline().decode()
@@ -53,10 +52,10 @@ class GPRS:
                 break
         return result
 
-    def get_attach_network(self):
-        print("Attach GPRS Network: "+str(self.attach_network()))
+    def print_attach_network(self):
+        print("Attach GPRS Network: "+str(self.get_attach_network()))
 
-    def apn_info(self):
+    def get_apn_info(self):
         self.run_at(self.q_apn)
         while True:
             line = self.ser.readline().decode()
@@ -65,8 +64,8 @@ class GPRS:
                 break
         return result
 
-    def get_apn(self):
-        print("APN: "+self.apn_info())
+    def print_apn(self):
+        print("APN: "+self.get_apn_info())
 
     def set_apn(self):
         self.run_at(self.s_apn)
@@ -80,7 +79,7 @@ class GPRS:
                 break
         return result
 
-    def activate_mobile_scene(self):
+    def get_activate_mobile_scene(self):
         self.run_at(self.mobile_scene)
         while True:
             line = self.ser.readline().decode()
@@ -92,7 +91,7 @@ class GPRS:
                 break
         return result
 
-    def ip(self):
+    def get_ip(self):
         self.run_at(self.q_ip)
         while True:
             line = self.ser.readline().decode()
@@ -101,5 +100,5 @@ class GPRS:
                 break
         return result
 
-    def get_ip(self):
-        print("IP:"+self.ip())
+    def print_ip(self):
+        print("IP:"+self.get_ip())
