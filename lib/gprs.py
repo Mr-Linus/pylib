@@ -79,7 +79,7 @@ class GPRS:
                 break
         return result
 
-    def get_activate_mobile_scene(self):
+    def activate_mobile_scene(self):
         self.run_at(self.mobile_scene)
         while True:
             line = self.ser.readline().decode()
