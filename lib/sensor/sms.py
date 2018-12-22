@@ -1,6 +1,7 @@
 import serial
 import time
 
+
 class SMS:
     sms_center = "86 13 80 02 50 50 0F"
     pdu_sms_center = "0891683108200505F0"
