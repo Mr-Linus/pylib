@@ -43,3 +43,5 @@ class NVIDIA(object):
             card_info.append((i, nvmlDeviceGetName(handle).decode()))
         self.close_card()
         return card_info
+
+
