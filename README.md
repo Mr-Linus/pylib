@@ -4,12 +4,20 @@
 - 硬件信息查询库
 - 系统信息查询库
 
-## 目前涵盖的扩展芯片
+## 硬件信息库
+
+- CPU
+- Memory
+- Net
+- Disk
+
+#### 目前涵盖的扩展芯片
+
 - DL-20 (Zigbee)
 - SIM7000C (GPS\GPRS\NB-IOT)
 - SIM800C (GPS\GPRS\GSM)
 
-## 功能库 
+## 芯片功能库 
 - GPS
   - GPS+北斗联合定位
   - GPS独立定位
