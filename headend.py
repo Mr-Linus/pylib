@@ -1,6 +1,8 @@
-import pymysql
+from SQL import SQL
+from lib.sys import SYSTEM
+from lib.nvidia import NVIDIA
 
-map = {
+map_table = {
     # Data Type int
     'CPUNUM': 'SYSTEMINT',
     'CPULNUM': 'SYSTEMINT',
@@ -27,31 +29,34 @@ map = {
     'UPTIME': 'SYSTEMTIME',
 }
 
+map_context = {
+    'CPUNUM': SYSTEM.CPU.num,
+    'CPULNUM': SYSTEM.CPU.Lnum,
+    'CPUPER': SYSTEM.CPU().get_percent(),
+    'MEMPER': SYSTEM.MEM.persent,
+    # Data Type float
+    'MEMUSED': SYSTEM.MEM.used_GB,
+    'MEMFREE': SYSTEM.MEM.free_GB,
+    'MEMTOTAL': SYSTEM.MEM.total_GB,
+    'SWAPUSED': SYSTEM.SWAP.used,
+    'SWAPFREE': SYSTEM.SWAP.free,
+    'SWAPTOTAL': SYSTEM.SWAP.total,
+    'GCARDFREE': NVIDIA.MEM().get_mem('GB', 'free'),
+    'GCARDUSED': NVIDIA.MEM().get_mem('GB', 'used'),
+    'GCARDTOTAL': NVIDIA.MEM().get_mem('GB', 'total'),
+    'NETSEND': SYSTEM.NET.send_MB,
+    'NETRECV': SYSTEM.NET.recv_MB,
+    # Data Type String
+    'HOSTNAME': SYSTEM.hostname,
+    'IP': SYSTEM.NET().get_netcard(),
+    'GCARDNAME': NVIDIA().get_card_info(),
+    'GCARDVERSION': NVIDIA().get_driver_version(),
+    # Data Type Time
+    'UPTIME': SYSTEM().system_uptime(),
+}
 
-class SQL:
-    MYSQLSERVER = 'k8s.geekfan.top'
 
-    MYSQLUSER = 'root'
-
-    MYSQLPASSWORD = 'GeekCloud'
-
-    MYSQLDATABASE = 'SYSTEMLIB'
-
-    db = pymysql.connect(MYSQLSERVER, MYSQLUSER, MYSQLPASSWORD, MYSQLDATABASE)
-
-    cursor = db.cursor()
-
-    def run(self, command):
-        try:
-            self.cursor.execute(command)
-            self.db.commit()
-
-        except:
-            self.db.rollback()
-
-    def update(self, table, data_type, context):
-        update_sql = "UPDATE "+str(table)+" SET CONTEXT="+str(context)+"WHERE TYPE="+str(data_type)
-        self.run(update_sql)
-
-    def close(self):
-        self.db.close()
+def update_all():
+    sql = SQL()
+    for data_type, table in map_table:
+        sql.update(table=table, data_type=data_type, context=map_context[data_type])
