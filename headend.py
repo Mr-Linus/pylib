@@ -8,6 +8,8 @@ map_table = {
     'CPULNUM': 'SYSTEMINT',
     'CPUPER': 'SYSTEMINT',
     'MEMPER': 'SYSTEMINT',
+    'NET_SENDPER': 'SYSTEMFLOAT',
+    'NET_RECVPER': 'SYSTEMFLOAT',
     # Data Type float
     'MEMUSED': 'SYSTEMFLOAT',
     'MEMFREE': 'SYSTEMFLOAT',
@@ -40,12 +42,14 @@ map_context = {
     'MEMTOTAL': SYSTEM.MEM.total_GB,
     'SWAPUSED': SYSTEM.SWAP.used / 1024,
     'SWAPFREE': SYSTEM.SWAP.free / 1024,
-    'SWAPTOTAL': SYSTEM.SWAP.total,
+    'SWAPTOTAL': SYSTEM.SWAP.total / 1024,
     'GCARDFREE': NVIDIA.MEM().get_mem('GB', 'free'),
     'GCARDUSED': NVIDIA.MEM().get_mem('GB', 'used'),
     'GCARDTOTAL': NVIDIA.MEM().get_mem('GB', 'total'),
     'NETSEND': SYSTEM.NET.send_MB,
     'NETRECV': SYSTEM.NET.recv_MB,
+    'NET_SENDPER': int(SYSTEM.NET.send_MB / (SYSTEM.NET.recv_MB + SYSTEM.NET.send_MB)),
+    'NET_RECVPER': int(SYSTEM.NET.recv_MB / (SYSTEM.NET.recv_MB + SYSTEM.NET.send_MB)),
     # Data Type String
     'HOSTNAME': SYSTEM.hostname,
     #'IP': SYSTEM.NET().get_netcard(),
@@ -63,5 +67,4 @@ def update_all():
             sql.update_char(table=table, data_type=data_type, context=map_context[data_type])
         else:
             sql.update_num(table=table, data_type=data_type, context=map_context[data_type])
-    sql.close()
 

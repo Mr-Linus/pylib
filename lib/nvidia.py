@@ -18,8 +18,8 @@ class NVIDIA(object):
                 }.get(type, 'error')
 
             return {
-                'MB': round(return_type(type) / 1024 / 1024 / 1024, 2),
-                'GB': round(return_type(type) / 1024 / 1024 / 1024 / 1024, 2),
+                'MB': round(return_type(type) / 1024 / 1024, 2),
+                'GB': round(return_type(type) / 1024 / 1024 / 1024, 2),
             }.get(unit, 'error')
 
     def init_card(self):

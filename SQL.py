@@ -2,13 +2,7 @@ import pymysql
 
 
 class SQL:
-    MYSQLSERVER = 'k8s.geekfan.top'
 
-    MYSQLUSER = 'root'
-
-    MYSQLPASSWORD = 'GeekCloud'
-
-    MYSQLDATABASE = 'SYSTEMLIB'
 
     db = pymysql.connect(
         host=MYSQLSERVER,
@@ -27,7 +21,6 @@ class SQL:
         except:
             print("Run MYSQL error:")
             print(command)
-            self.db.rollback()
 
 
     def update_char(self, table, data_type, context):
