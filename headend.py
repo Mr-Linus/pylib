@@ -22,11 +22,11 @@ map_table = {
     'NETRECV': 'SYSTEMFLOAT',
     # Data Type String
     'HOSTNAME': 'SYSTEMCHAR',
-    'IP': 'SYSTEMCHAR',
-    'GCARDNAME': 'SYSTEMCHAR',
-    'GCARDVERSION': 'SYSTEMCHAR',
+    #'IP': 'SYSTEMCHAR',
+    #'GCARDNAME': 'SYSTEMCHAR',
+    'GCARDVER': 'SYSTEMCHAR',
     # Data Type Time
-    'UPTIME': 'SYSTEMTIME',
+    #'UPTIME': 'SYSTEMTIME',
 }
 
 map_context = {
@@ -48,15 +48,20 @@ map_context = {
     'NETRECV': SYSTEM.NET.recv_MB,
     # Data Type String
     'HOSTNAME': SYSTEM.hostname,
-    'IP': SYSTEM.NET().get_netcard(),
-    'GCARDNAME': NVIDIA().get_card_info(),
-    'GCARDVERSION': NVIDIA().get_driver_version(),
+    #'IP': SYSTEM.NET().get_netcard(),
+    #'GCARDNAME': NVIDIA().get_card_info(),
+    'GCARDVER': NVIDIA().get_driver_version(),
     # Data Type Time
-    'UPTIME': SYSTEM().system_uptime(),
+    #'UPTIME': SYSTEM().system_uptime(),
 }
 
 
 def update_all():
     sql = SQL()
-    for data_type, table in map_table:
-        sql.update(table=table, data_type=data_type, context=map_context[data_type])
+    for data_type, table in map_table.items():
+        if table == 'SYSTEMCHAR':
+            sql.update_char(table=table, data_type=data_type, context=map_context[data_type])
+        else:
+            sql.update_num(table=table, data_type=data_type, context=map_context[data_type])
+    sql.close()
+

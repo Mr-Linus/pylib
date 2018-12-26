@@ -1,5 +1,4 @@
+from headend import update_all
 
-from lib.nvidia import NVIDIA
-
-n = NVIDIA()
-print(n.get_card_info())
+if __name__ == '__main__':
+    update_all()

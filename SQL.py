@@ -10,8 +10,13 @@ class SQL:
 
     MYSQLDATABASE = 'SYSTEMLIB'
 
-    db = pymysql.connect(MYSQLSERVER, MYSQLUSER, MYSQLPASSWORD, MYSQLDATABASE)
-
+    db = pymysql.connect(
+        host=MYSQLSERVER,
+        port=3310,
+        user=MYSQLUSER,
+        passwd=MYSQLPASSWORD,
+        db=MYSQLDATABASE
+    )
     cursor = db.cursor()
 
     def run(self, command):
@@ -20,11 +25,19 @@ class SQL:
             self.db.commit()
 
         except:
+            print("Run MYSQL error:")
+            print(command)
             self.db.rollback()
 
-    def update(self, table, data_type, context):
-        update_sql = "UPDATE "+str(table)+" SET CONTEXT="+str(context)+"WHERE TYPE="+str(data_type)
+
+    def update_char(self, table, data_type, context):
+        update_sql = "UPDATE "+str(table)+" SET CONTEXT=\'"+str(context)+"\' WHERE TYPE=\'"+str(
+            data_type)+"\'"
         self.run(update_sql)
 
+    def update_num(self, table, data_type, context):
+        update_sql = "UPDATE " + str(table) + " SET CONTEXT=" + str(context) + " WHERE TYPE=\'" + str(
+            data_type) + "\'"
+        self.run(update_sql)
     def close(self):
         self.db.close()
