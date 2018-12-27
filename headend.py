@@ -34,7 +34,7 @@ map_table = {
 map_context = {
     'CPUNUM': SYSTEM.CPU.num,
     'CPULNUM': SYSTEM.CPU.Lnum,
-    'CPUPER': SYSTEM.CPU().get_percent(),
+    'CPUPER': SYSTEM.CPU().per,
     'MEMPER': SYSTEM.MEM.persent,
     # Data Type float
     'MEMUSED': SYSTEM.MEM.used_GB,

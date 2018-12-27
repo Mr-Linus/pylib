@@ -2,7 +2,13 @@ import pymysql
 
 
 class SQL:
+    MYSQLSERVER = 'k8s.geekfan.top'
 
+    MYSQLUSER = 'root'
+
+    MYSQLPASSWORD = 'GeekCloud'
+
+    MYSQLDATABASE = 'SYSTEMLIB'
 
     db = pymysql.connect(
         host=MYSQLSERVER,
