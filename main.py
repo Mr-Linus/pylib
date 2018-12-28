@@ -3,4 +3,4 @@ import time
 if __name__ == '__main__':
     while(1):
         update_all()
-        time.sleep(3)
+        time.sleep(1)

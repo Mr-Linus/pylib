@@ -28,7 +28,6 @@ class SQL:
             print("Run MYSQL error:")
             print(command)
 
-
     def update_char(self, table, data_type, context):
         update_sql = "UPDATE "+str(table)+" SET CONTEXT=\'"+str(context)+"\' WHERE TYPE=\'"+str(
             data_type)+"\'"
@@ -38,5 +37,6 @@ class SQL:
         update_sql = "UPDATE " + str(table) + " SET CONTEXT=" + str(context) + " WHERE TYPE=\'" + str(
             data_type) + "\'"
         self.run(update_sql)
+
     def close(self):
         self.db.close()

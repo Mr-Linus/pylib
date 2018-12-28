@@ -1,7 +1,7 @@
 import psutil
 import datetime
 import socket
-
+import time
 
 class SYSTEM(object):
 # Systen Information
@@ -82,11 +82,9 @@ class SYSTEM(object):
             print(result)
 
 
-
-
-
 if __name__ == '__main__':
-    print(SYSTEM().CPU().per)
+        print(SYSTEM().CPU().get_percent())
+        time.sleep(1)
 
 
 
