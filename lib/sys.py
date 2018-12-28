@@ -15,12 +15,13 @@ class SYSTEM(object):
     class CPU(object):
         num = psutil.cpu_count(logical=False)
         Lnum = psutil.cpu_count(logical=True)
-        per = int(psutil.cpu_percent())
-        # def get_percent(self):
-        #     sum = 0
-        #     for persent in psutil.cpu_percent(interval=1, percpu=True):
-        #         sum += persent
-        #     return int(sum / self.num)
+        # per = psutil.cpu_percent()
+        
+        def get_percent(self):
+            sum = 0
+            for persent in psutil.cpu_percent(interval=1, percpu=True):
+                sum += persent
+            return int(sum / self.Lnum)
 
     class MEM(object):
         persent = psutil.virtual_memory().percent
