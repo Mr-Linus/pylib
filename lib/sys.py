@@ -16,7 +16,7 @@ class SYSTEM(object):
         num = psutil.cpu_count(logical=False)
         Lnum = psutil.cpu_count(logical=True)
         # per = psutil.cpu_percent()
-        
+
         def get_percent(self):
             sum = 0
             for persent in psutil.cpu_percent(interval=1, percpu=True):
