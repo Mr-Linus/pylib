@@ -24,13 +24,23 @@ class SYSTEM(object):
             return int(sum / self.Lnum)
 
     class MEM(object):
-        persent = psutil.virtual_memory().percent
-        used_MB = psutil.virtual_memory().used / 1024 / 1024
-        used_GB = round(used_MB / 1024, 2)
-        free_MB = psutil.virtual_memory().free / 1024 / 1024
-        free_GB = round(free_MB / 1024, 2)
-        total_MB = psutil.virtual_memory().total / 1024 / 1024
-        total_GB = round(total_MB / 1024, 2)
+
+        def get_mem(self, unit, mtype):
+
+            def return_type(mtype):
+                return {
+                    'total': psutil.virtual_memory().total,
+                    'free': psutil.virtual_memory().free,
+                    'used': psutil.virtual_memory().used,
+                }.get(mtype, 'error')
+
+            return {
+                'MB': round(return_type(mtype) / 1024 / 1024, 2),
+                'GB': round(return_type(mtype) / 1024 / 1024 / 1024, 2),
+            }.get(unit, 'error')
+
+        def get_per(self):
+            return psutil.virtual_memory().percent
 
     class SWAP(object):
         used = psutil.swap_memory().used / 1024 / 1024

@@ -22,6 +22,11 @@ class NVIDIA(object):
                 'GB': round(return_type(type) / 1024 / 1024 / 1024, 2),
             }.get(unit, 'error')
 
+    def gpu_per(self):
+        nvmlInit()
+        per = nvmlDeviceGetUtilizationRates(nvmlDeviceGetHandleByIndex(0)).gpu
+        return per
+
     def init_card(self):
         nvmlInit()
 
@@ -45,3 +50,5 @@ class NVIDIA(object):
         return card_info
 
 
+if __name__ == '__main__':
+    print(NVIDIA().gpu_per())
