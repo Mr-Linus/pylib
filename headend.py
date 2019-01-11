@@ -1,5 +1,5 @@
 from SQL import SQL
-from lib.sys import SYSTEM
+from lib.system.core import SYSTEM
 from lib.nvidia import NVIDIA
 
 map_table = {
