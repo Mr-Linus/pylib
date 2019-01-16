@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a2d97999-ebd8-4539-be64-63852b5df261" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SQL.py" beforeDir="false" afterPath="$PROJECT_DIR$/SQL.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headend.py" beforeDir="false" afterPath="$PROJECT_DIR$/headend.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/sys.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,16 +44,16 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/sensor/gps.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1950">
-              <caret line="132" selection-start-line="132" selection-end-line="132" />
+            <state relative-caret-position="440">
+              <caret line="49" column="33" lean-forward="true" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/sensor/at.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
@@ -96,8 +93,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2441" />
-    <option name="y" value="-3" />
+    <option name="x" value="503" />
+    <option name="y" value="23" />
     <option name="width" value="1116" />
     <option name="height" value="1013" />
   </component>
@@ -257,17 +254,19 @@
       <workItem from="1546839240089" duration="834000" />
       <workItem from="1546860732346" duration="978000" />
       <workItem from="1546957354523" duration="5000" />
+      <workItem from="1547275921139" duration="25000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3988000" />
+    <option name="totallyTimeSpent" value="4013000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2441" y="-3" width="1116" height="1013" extended-state="0" />
+    <frame x="503" y="23" width="1116" height="1013" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4777416" visible="true" weight="0.32774675" />
-      <window_info id="Structure" order="1" sideWeight="0.5222584" side_tool="true" visible="true" weight="0.32774675" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4766558" visible="true" weight="0.33333334" />
+      <window_info id="Structure" order="1" sideWeight="0.5233442" side_tool="true" visible="true" weight="0.33333334" />
       <window_info id="Favorites" order="2" sideWeight="0.5008606" side_tool="true" weight="0.14533623" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -444,17 +443,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/sensor/gps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1950">
-          <caret line="132" selection-start-line="132" selection-end-line="132" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/sensor/at.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/sensor/gps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="49" column="33" lean-forward="true" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="33" />
         </state>
       </provider>
     </entry>
