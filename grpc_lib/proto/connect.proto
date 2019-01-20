@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+// The greeting service definition.
+service System {
+  // Sends a greeting
+  rpc cpu (Request) returns (ReplyInt) {}
+  rpc mem (Request) returns (ReplyFloat) {}
+  rpc swap (Request) returns (ReplyFloat) {}
+  rpc net (Request) returns (ReplyFloat) {}
+  rpc uptime (Request) returns (ReplyInt) {}
+}
+
+// The request message containing the user's name.
+message Request {
+  string name = 1;
+  string type = 2;
+  string unit = 3;
+}
+
+// The response message containing the greetings
+message ReplyInt {
+  int32 result = 1;
+}
+
+message ReplyFloat{
+  float result = 1;
+}

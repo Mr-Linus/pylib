@@ -3,8 +3,8 @@ import datetime
 import socket
 import time
 
+
 class SYSTEM(object):
-# Systen Information
     hostname = socket.gethostname()
     nowtime = str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     disk = psutil.disk_partitions()
