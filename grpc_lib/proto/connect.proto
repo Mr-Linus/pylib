@@ -10,6 +10,10 @@ service System {
   rpc uptime (Request) returns (ReplyInt) {}
 }
 
+service NVIDIA {
+  rpc mem (Request) returns (ReplyFloat) {}
+}
+
 // The request message containing the user's name.
 message Request {
   string name = 1;

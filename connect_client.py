@@ -13,7 +13,7 @@ def run():
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = connect_pb2_grpc.SystemStub(channel)
         response = stub.cpu(connect_pb2.Request(name="per"))
-    print("Client received CPU Persent: " + str(response.per))
+    print("Client received CPU Persent: " + str(response.result))
 
 
 if __name__ == '__main__':

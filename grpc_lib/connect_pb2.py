@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\rconnect.proto\"3\n\x07Request\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x0c\n\x04unit\x18\x03 \x01(\t\"\x1a\n\x08ReplyInt\x12\x0e\n\x06result\x18\x01 \x01(\x05\"\x1c\n\nReplyFloat\x12\x0e\n\x06result\x18\x01 \x01(\x02\x32\xa8\x01\n\x06System\x12\x1c\n\x03\x63pu\x12\x08.Request\x1a\t.ReplyInt\"\x00\x12\x1e\n\x03mem\x12\x08.Request\x1a\x0b.ReplyFloat\"\x00\x12\x1f\n\x04swap\x12\x08.Request\x1a\x0b.ReplyFloat\"\x00\x12\x1e\n\x03net\x12\x08.Request\x1a\x0b.ReplyFloat\"\x00\x12\x1f\n\x06uptime\x12\x08.Request\x1a\t.ReplyInt\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\rconnect.proto\"3\n\x07Request\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x0c\n\x04unit\x18\x03 \x01(\t\"\x1a\n\x08ReplyInt\x12\x0e\n\x06result\x18\x01 \x01(\x05\"\x1c\n\nReplyFloat\x12\x0e\n\x06result\x18\x01 \x01(\x02\x32\xa8\x01\n\x06System\x12\x1c\n\x03\x63pu\x12\x08.Request\x1a\t.ReplyInt\"\x00\x12\x1e\n\x03mem\x12\x08.Request\x1a\x0b.ReplyFloat\"\x00\x12\x1f\n\x04swap\x12\x08.Request\x1a\x0b.ReplyFloat\"\x00\x12\x1e\n\x03net\x12\x08.Request\x1a\x0b.ReplyFloat\"\x00\x12\x1f\n\x06uptime\x12\x08.Request\x1a\t.ReplyInt\"\x00\x32(\n\x06NVIDIA\x12\x1e\n\x03mem\x12\x08.Request\x1a\x0b.ReplyFloat\"\x00\x62\x06proto3')
 )
 
 
@@ -217,5 +217,29 @@ _SYSTEM = _descriptor.ServiceDescriptor(
 _sym_db.RegisterServiceDescriptor(_SYSTEM)
 
 DESCRIPTOR.services_by_name['System'] = _SYSTEM
+
+
+_NVIDIA = _descriptor.ServiceDescriptor(
+  name='NVIDIA',
+  full_name='NVIDIA',
+  file=DESCRIPTOR,
+  index=1,
+  serialized_options=None,
+  serialized_start=299,
+  serialized_end=339,
+  methods=[
+  _descriptor.MethodDescriptor(
+    name='mem',
+    full_name='NVIDIA.mem',
+    index=0,
+    containing_service=None,
+    input_type=_REQUEST,
+    output_type=_REPLYFLOAT,
+    serialized_options=None,
+  ),
+])
+_sym_db.RegisterServiceDescriptor(_NVIDIA)
+
+DESCRIPTOR.services_by_name['NVIDIA'] = _NVIDIA
 
 # @@protoc_insertion_point(module_scope)

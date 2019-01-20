@@ -62,6 +62,17 @@ class System(connect_pb2_grpc.SystemServicer):
         return connect_pb2.ReplyInt(result=core.SYSTEM().system_uptime())
 
 
+class NVIDIA(connect_pb2_grpc.NVIDIAServicer):
+
+    def mem(self, request, context):
+        return connect_pb2.ReplyFloat(
+            result=core.SYSTEM().MEM().get_mem(
+                unit=request.unit,
+                mtype=request.type
+            )
+        )
+
+
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     connect_pb2_grpc.add_SystemServicer_to_server(System(), server)
