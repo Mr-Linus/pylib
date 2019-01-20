@@ -19,6 +19,11 @@ class SystemStub(object):
         request_serializer=connect__pb2.Request.SerializeToString,
         response_deserializer=connect__pb2.ReplyInt.FromString,
         )
+    self.mem_per = channel.unary_unary(
+        '/System/mem_per',
+        request_serializer=connect__pb2.Request.SerializeToString,
+        response_deserializer=connect__pb2.ReplyInt.FromString,
+        )
     self.mem = channel.unary_unary(
         '/System/mem',
         request_serializer=connect__pb2.Request.SerializeToString,
@@ -48,6 +53,13 @@ class SystemServicer(object):
   def cpu(self, request, context):
     """Sends a greeting
     """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def mem_per(self, request, context):
+    # missing associated documentation comment in .proto file
+    pass
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
@@ -85,6 +97,11 @@ def add_SystemServicer_to_server(servicer, server):
   rpc_method_handlers = {
       'cpu': grpc.unary_unary_rpc_method_handler(
           servicer.cpu,
+          request_deserializer=connect__pb2.Request.FromString,
+          response_serializer=connect__pb2.ReplyInt.SerializeToString,
+      ),
+      'mem_per': grpc.unary_unary_rpc_method_handler(
+          servicer.mem_per,
           request_deserializer=connect__pb2.Request.FromString,
           response_serializer=connect__pb2.ReplyInt.SerializeToString,
       ),

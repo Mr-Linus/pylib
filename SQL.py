@@ -1,5 +1,5 @@
-import pymysql
-
+#import pymysql
+import MySQLdb   as pymysql
 
 class SQL:
 

@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=_b('\n\rconnect.proto\"3\n\x07Request\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x0c\n\x04unit\x18\x03 \x01(\t\"\x1a\n\x08ReplyInt\x12\x0e\n\x06result\x18\x01 \x01(\x05\"\x1c\n\nReplyFloat\x12\x0e\n\x06result\x18\x01 \x01(\x02\x32\xa8\x01\n\x06System\x12\x1c\n\x03\x63pu\x12\x08.Request\x1a\t.ReplyInt\"\x00\x12\x1e\n\x03mem\x12\x08.Request\x1a\x0b.ReplyFloat\"\x00\x12\x1f\n\x04swap\x12\x08.Request\x1a\x0b.ReplyFloat\"\x00\x12\x1e\n\x03net\x12\x08.Request\x1a\x0b.ReplyFloat\"\x00\x12\x1f\n\x06uptime\x12\x08.Request\x1a\t.ReplyInt\"\x00\x32(\n\x06NVIDIA\x12\x1e\n\x03mem\x12\x08.Request\x1a\x0b.ReplyFloat\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\rconnect.proto\"3\n\x07Request\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0c\n\x04type\x18\x02 \x01(\t\x12\x0c\n\x04unit\x18\x03 \x01(\t\"\x1a\n\x08ReplyInt\x12\x0e\n\x06result\x18\x01 \x01(\x05\"\x1c\n\nReplyFloat\x12\x0e\n\x06result\x18\x01 \x01(\x02\x32\xca\x01\n\x06System\x12\x1c\n\x03\x63pu\x12\x08.Request\x1a\t.ReplyInt\"\x00\x12 \n\x07mem_per\x12\x08.Request\x1a\t.ReplyInt\"\x00\x12\x1e\n\x03mem\x12\x08.Request\x1a\x0b.ReplyFloat\"\x00\x12\x1f\n\x04swap\x12\x08.Request\x1a\x0b.ReplyFloat\"\x00\x12\x1e\n\x03net\x12\x08.Request\x1a\x0b.ReplyFloat\"\x00\x12\x1f\n\x06uptime\x12\x08.Request\x1a\t.ReplyInt\"\x00\x32(\n\x06NVIDIA\x12\x1e\n\x03mem\x12\x08.Request\x1a\x0b.ReplyFloat\"\x00\x62\x06proto3')
 )
 
 
@@ -166,7 +166,7 @@ _SYSTEM = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   serialized_start=129,
-  serialized_end=297,
+  serialized_end=331,
   methods=[
   _descriptor.MethodDescriptor(
     name='cpu',
@@ -178,9 +178,18 @@ _SYSTEM = _descriptor.ServiceDescriptor(
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
+    name='mem_per',
+    full_name='System.mem_per',
+    index=1,
+    containing_service=None,
+    input_type=_REQUEST,
+    output_type=_REPLYINT,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
     name='mem',
     full_name='System.mem',
-    index=1,
+    index=2,
     containing_service=None,
     input_type=_REQUEST,
     output_type=_REPLYFLOAT,
@@ -189,7 +198,7 @@ _SYSTEM = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='swap',
     full_name='System.swap',
-    index=2,
+    index=3,
     containing_service=None,
     input_type=_REQUEST,
     output_type=_REPLYFLOAT,
@@ -198,7 +207,7 @@ _SYSTEM = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='net',
     full_name='System.net',
-    index=3,
+    index=4,
     containing_service=None,
     input_type=_REQUEST,
     output_type=_REPLYFLOAT,
@@ -207,7 +216,7 @@ _SYSTEM = _descriptor.ServiceDescriptor(
   _descriptor.MethodDescriptor(
     name='uptime',
     full_name='System.uptime',
-    index=4,
+    index=5,
     containing_service=None,
     input_type=_REQUEST,
     output_type=_REPLYINT,
@@ -225,8 +234,8 @@ _NVIDIA = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=1,
   serialized_options=None,
-  serialized_start=299,
-  serialized_end=339,
+  serialized_start=333,
+  serialized_end=373,
   methods=[
   _descriptor.MethodDescriptor(
     name='mem',

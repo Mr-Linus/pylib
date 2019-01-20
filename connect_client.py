@@ -16,6 +16,7 @@ def run():
     print("Client received CPU Persent: " + str(response.result))
 
 
+
 if __name__ == '__main__':
     logging.basicConfig()
     run()

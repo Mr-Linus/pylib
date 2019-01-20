@@ -4,22 +4,22 @@ from pynvml import *
 class NVIDIA(object):
 
     class MEM(object):
-        def get_mem(self, unit, type):
+        def get_mem(self, unit, mtype):
             nvmlInit()
             handle = nvmlDeviceGetHandleByIndex(0)
             meminfo = nvmlDeviceGetMemoryInfo(handle)
             nvmlShutdown()
 
-            def return_type(type):
+            def return_type(mtype):
                 return {
                     'total': meminfo.total,
                     'free': meminfo.free,
                     'used': meminfo.used,
-                }.get(type, 'error')
+                }.get(mtype, 'error')
 
             return {
-                'MB': round(return_type(type) / 1024 / 1024, 2),
-                'GB': round(return_type(type) / 1024 / 1024 / 1024, 2),
+                'MB': round(return_type(mtype) / 1024 / 1024, 2),
+                'GB': round(return_type(mtype) / 1024 / 1024 / 1024, 2),
             }.get(unit, 'error')
 
     def gpu_per(self):

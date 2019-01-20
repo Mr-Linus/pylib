@@ -6,7 +6,7 @@ import grpc
 import grpc_lib.connect_pb2 as connect_pb2
 import grpc_lib.connect_pb2_grpc as connect_pb2_grpc
 import lib.system.core as core
-
+import lib.nvidia as nvdia
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
 
@@ -20,7 +20,7 @@ class System(connect_pb2_grpc.SystemServicer):
         elif request.name == "Lnum":
             return connect_pb2.ReplyInt(result=core.SYSTEM().CPU().Lnum)
         else:
-            return connect_pb2.ReplyInt(result="")
+            return connect_pb2.ReplyInt(result=0)
 
     def mem(self, request, context):
         return connect_pb2.ReplyFloat(
@@ -29,6 +29,8 @@ class System(connect_pb2_grpc.SystemServicer):
                 mtype=request.type
             )
         )
+    def mem_per(self, request, context):
+        return connect_pb2.ReplyInt(result=int(core.SYSTEM().MEM().get_per()))
 
     def swap(self, request, context):
         if request.type == 'used':
@@ -66,7 +68,7 @@ class NVIDIA(connect_pb2_grpc.NVIDIAServicer):
 
     def mem(self, request, context):
         return connect_pb2.ReplyFloat(
-            result=core.SYSTEM().MEM().get_mem(
+            result=nvdia.NVIDIA().MEM().get_mem(
                 unit=request.unit,
                 mtype=request.type
             )
@@ -76,6 +78,7 @@ class NVIDIA(connect_pb2_grpc.NVIDIAServicer):
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     connect_pb2_grpc.add_SystemServicer_to_server(System(), server)
+    connect_pb2_grpc.add_NVIDIAServicer_to_server(NVIDIA(), server)
     server.add_insecure_port('[::]:50051')
     server.start()
     try:

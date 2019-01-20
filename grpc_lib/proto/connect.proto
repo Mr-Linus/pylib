@@ -4,6 +4,7 @@ syntax = "proto3";
 service System {
   // Sends a greeting
   rpc cpu (Request) returns (ReplyInt) {}
+  rpc mem_per (Request) returns (ReplyInt) {}
   rpc mem (Request) returns (ReplyFloat) {}
   rpc swap (Request) returns (ReplyFloat) {}
   rpc net (Request) returns (ReplyFloat) {}
