@@ -1,8 +1,12 @@
-#import pymysql
-import MySQLdb   as pymysql
+import pymysql  # import MySQLdb   as pymysql
+from settings import MYSQLConfig
 
 class SQL:
-
+    MYSQLSERVER = MYSQLConfig['MYSQLSERVER']
+    port = MYSQLConfig['port']
+    MYSQLUSER = MYSQLConfig['MYSQLUSER']
+    MYSQLPASSWORD = MYSQLConfig['MYSQLPASSWORD']
+    MYSQLDATABASE = MYSQLConfig['MYSQLDATABASE']
 
     db = pymysql.connect(
         host=MYSQLSERVER,
