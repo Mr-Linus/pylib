@@ -1,6 +1,6 @@
-from SQL import SQL
+from lib.SQL.core import SQL
 from lib.system.core import SYSTEM
-from lib.nvidia import NVIDIA
+from lib.system.nvidia import NVIDIA
 import grpc
 import grpc_lib.connect_pb2 as connect_pb2
 import grpc_lib.connect_pb2_grpc as connect_pb2_grpc

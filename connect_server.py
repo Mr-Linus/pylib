@@ -6,7 +6,7 @@ import grpc
 import grpc_lib.connect_pb2 as connect_pb2
 import grpc_lib.connect_pb2_grpc as connect_pb2_grpc
 import lib.system.core as core
-import lib.nvidia as nvdia
+import lib.system.nvidia as nvdia
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
 
