@@ -13,13 +13,9 @@ pylib是一个用python编写的用于获取传感器芯片、硬件、服务、
 - Net
 - Disk
 - GCard
-### 目前支持的传感器芯片
 
-- DL-20 (Zigbee)
-- SIM7000C (GPS\GPRS\NB-IOT)
-- SIM800C (GPS\GPRS\GSM)
 
-## 芯片功能库 
+### 芯片功能库 
 - GPS
   - GPS+北斗联合定位
   - GPS独立定位
@@ -40,7 +36,11 @@ pylib是一个用python编写的用于获取传感器芯片、硬件、服务、
 - SMS
   - 短信 TEXT 发送
 
+### 目前支持的传感器芯片
 
+- DL-20 (Zigbee)
+- SIM7000C (GPS\GPRS\NB-IOT)
+- SIM800C (GPS\GPRS\GSM)
 
 ### 更新日志
 
