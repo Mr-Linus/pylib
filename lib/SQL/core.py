@@ -37,8 +37,12 @@ class SQL:
             data_type) + "\'"
         self.run(sql)
 
-    def create_table(self,table_name, list_name):
+    def create_table(self, table_name, list_name):
         sql = "CREATE TABLE " + str(table_name) + " ( "+str(list_name) + " ) "
+        self.run(sql)
+
+    def alter_table_field_add(self, table_name, field, type_size):
+        sql = "ALTER TABLE " + str(table_name) + " ADD " + str(field) + " " + str(type_size)
         self.run(sql)
 
     def alter_table_rename(self, table_name, new_name):
@@ -60,7 +64,7 @@ class SQL:
 
     def delete_table_field(self, table_name, field_name):
         sql = "ALTER TABLE " + str(table_name) + " DROP " + str(field_name)
-        self.run()
+        self.run(sql)
 
     def delete_char(self, table, data_type, context):
         sql = "DELETE FROM" + str(table) + "\' WHERE " + str(data_type) + \
@@ -70,6 +74,14 @@ class SQL:
     def delete_num(self, table, data_type, context):
         sql = "DELETE FROM" + str(table) + "\' WHERE " + str(data_type) + \
               " = " + str(context)
+        self.run(sql)
+
+    def insert_num(self, table, context):
+        sql = "INSERT INTO " + str(table) + " VALUES (" + str(context) + ")"
+        self.run(sql)
+
+    def insert_char(self, table, context):
+        sql = "INSERT INTO " + str(table) + " VALUES (\'" + str(context) + "\')"
         self.run(sql)
 
     def close(self):
