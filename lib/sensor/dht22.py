@@ -1,9 +1,9 @@
 import Adafruit_DHT
 
-
 class DHT22(object):
+    # Init the class
     sensor = Adafruit_DHT.DHT22
-    pin = 17  # GPIO 17
+    pin = 17  # GPIO Number
 
     def get_temperature(self):
         _, temperature = Adafruit_DHT.read_retry(self.sensor, self.pin)

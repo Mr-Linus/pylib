@@ -5,7 +5,14 @@ import grpc
 import grpc_lib.connect_pb2 as connect_pb2
 import grpc_lib.connect_pb2_grpc as connect_pb2_grpc
 
-map_table = {
+map_tables = {
+    "SYSTEMCHAR": "TYPE CHAR(20) CONTEXT CHAR(30)",
+    "SYSTEMINT": "TYPE CHAR(20) CONTEXT TINYINT(4)",
+    "SYSTEFLOAT": "TYPE CHAR(20) CONTEXT FLOAT(8,2)",
+}
+
+
+map_table_field = {
     # Data Type int
     'CPUNUM': 'SYSTEMINT',
     'CPULNUM': 'SYSTEMINT',
@@ -64,7 +71,7 @@ def update_all():
         # Data Type Time
         # 'UPTIME': SYSTEM().system_uptime(),
     }
-    for data_type, table in map_table.items():
+    for data_type, table in map_table_field.items():
         if table == 'SYSTEMCHAR':
             sql.update_char(table=table, data_type=data_type, context=map_context[data_type])
         else:
@@ -107,8 +114,27 @@ def update_all_grpc():
         # Data Type Time
         # 'UPTIME': SYSTEM().system_uptime(),
     }
-    for data_type, table in map_table.items():
+    for data_type, table in map_table_field.items():
         if table == 'SYSTEMCHAR':
             sql.update_char(table=table, data_type=data_type, context=map_context[data_type])
         else:
             sql.update_num(table=table, data_type=data_type, context=map_context[data_type])
+
+
+def restore_db(db_name):
+    db = SQL()
+    # Step 1: Delete old db
+    db.delete_db(db_name=db_name)
+    # Step 2: Create new db
+    db.create_db(db_name=db_name)
+    # Step 3: Set the operation db to the new db
+    db.change_db(db_name=db_name)
+    # Step 4: Create tables
+    for table, list_name in map_tables.items():
+        db.create_table(table_name=table, list_name=list_name)
+    # Step 5: Insert initial value into the tables
+    for field, table in map_table_field.items():
+        if table == "SYSTEMCHAR":
+            db.insert(table=table, context="\"" + str(field) + "\" ," + "\'0\'")
+        else:
+            db.insert(table=table, context="\"" + str(field) + "\" ," + "0")

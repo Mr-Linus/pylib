@@ -28,6 +28,7 @@ class SQL:
             print(command)
 
     def update_char(self, table, data_type, context):
+
         sql = "UPDATE "+str(table)+" SET CONTEXT=\'"+str(context)+"\' WHERE TYPE=\'"+str(
             data_type)+"\'"
         self.run(sql)
@@ -35,6 +36,10 @@ class SQL:
     def update_num(self, table, data_type, context):
         sql = "UPDATE " + str(table) + " SET CONTEXT=" + str(context) + " WHERE TYPE=\'" + str(
             data_type) + "\'"
+        self.run(sql)
+
+    def create_db(self, db_name):
+        sql = "CRATE DATABASE IF NOT EXISTS " + str(db_name)
         self.run(sql)
 
     def create_table(self, table_name, list_name):
@@ -76,12 +81,16 @@ class SQL:
               " = " + str(context)
         self.run(sql)
 
-    def insert_num(self, table, context):
+    def insert(self, table, context):
         sql = "INSERT INTO " + str(table) + " VALUES (" + str(context) + ")"
         self.run(sql)
 
-    def insert_char(self, table, context):
-        sql = "INSERT INTO " + str(table) + " VALUES (\'" + str(context) + "\')"
+    def delete_db(self, db_name):
+        sql = "DROP DATABASE IF EXISTS " + str(db_name)
+        self.run(sql)
+
+    def change_db(self, db_name):
+        sql = "USE " + str(db_name)
         self.run(sql)
 
     def close(self):
