@@ -13,14 +13,14 @@ class SQL:
     """
     This class is used to implement CRUD for the database.
     """
-
+    # Incoming database parameters.
     MYSQLSERVER = MYSQLConfig['MYSQLSERVER']
     port = MYSQLConfig['port']
     MYSQLUSER = MYSQLConfig['MYSQLUSER']
     MYSQLPASSWORD = MYSQLConfig['MYSQLPASSWORD']
     MYSQLDATABASE = MYSQLConfig['MYSQLDATABASE']
 
-    # Instantiated class by the para in settings.py
+    # Instantiated class by the para in settings.py.
     db = pymysql.connect(
         host=MYSQLSERVER,
         port=3310,
@@ -28,7 +28,7 @@ class SQL:
         passwd=MYSQLPASSWORD,
         db=MYSQLDATABASE
     )
-    # Instantiated cursor
+    # Instantiated cursor.
     cursor = db.cursor()
 
     def run(self, command):
