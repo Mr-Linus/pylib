@@ -62,10 +62,15 @@ class SQL:
         sql = "ALTER TABLE " + str(table_name) + " DROP " + str(field_name)
         self.run()
 
-    # def delete_char(self, table, data_type, context):
-    #     sql = "DELETE "+str(table)+" SET CONTEXT=\'"+str(context)+"\' WHERE TYPE=\'"+str(
-    #         data_type)+"\'"
-    #     self.run(sql)
+    def delete_char(self, table, data_type, context):
+        sql = "DELETE FROM" + str(table) + "\' WHERE " + str(data_type) + \
+              " = \'" + str(context)+"\'"
+        self.run(sql)
+
+    def delete_num(self, table, data_type, context):
+        sql = "DELETE FROM" + str(table) + "\' WHERE " + str(data_type) + \
+              " = " + str(context)
+        self.run(sql)
 
     def close(self):
         self.db.close()
