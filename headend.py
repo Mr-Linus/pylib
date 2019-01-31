@@ -5,13 +5,14 @@ import grpc
 import grpc_lib.connect_pb2 as connect_pb2
 import grpc_lib.connect_pb2_grpc as connect_pb2_grpc
 
+# Association table name and table structure
 map_tables = {
     "SYSTEMCHAR": "TYPE CHAR(20) CONTEXT CHAR(30)",
     "SYSTEMINT": "TYPE CHAR(20) CONTEXT TINYINT(4)",
     "SYSTEFLOAT": "TYPE CHAR(20) CONTEXT FLOAT(8,2)",
 }
 
-
+# Association table name and table fields
 map_table_field = {
     # Data Type int
     'CPUNUM': 'SYSTEMINT',
@@ -43,6 +44,11 @@ map_table_field = {
 
 
 def update_all():
+    """
+    Description: Get infomation from pylib and update it to
+    the database with grpc server.
+    :return: None
+    """
     sql = SQL()
     map_context = {
         'CPUNUM': SYSTEM.CPU.num,
@@ -79,6 +85,11 @@ def update_all():
 
 
 def update_all_grpc():
+    """
+    Description: Get infomation from pylib with grpc-server and update it to
+    the database.
+    :return: None
+    """
     channel = grpc.insecure_channel('10.128.35.163:50051')
     stub = connect_pb2_grpc.SystemStub(channel)
     stubNV = connect_pb2_grpc.NVIDIAStub(channel)
@@ -122,6 +133,11 @@ def update_all_grpc():
 
 
 def restore_db(db_name):
+    """
+    Description: restore the database
+    :param db_name: database's name
+    :return: None
+    """
     db = SQL()
     # Step 1: Delete old db
     db.delete_db(db_name=db_name)
