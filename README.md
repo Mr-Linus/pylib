@@ -14,8 +14,12 @@ pylib是一个用python编写的用于获取传感器芯片、硬件、服务、
 
 ### 案例
 
-- NUPT 服务器监控仪表盘
+- 阿里云 DATAV NUPT 服务器监控仪表盘
+
 ![nupt](image/dashboard.png)
+
+#### 系统架构
+![struct](image/structure.jpg)
 
 ### 更新日志
 
