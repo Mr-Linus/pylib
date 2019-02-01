@@ -61,8 +61,8 @@ class SYSTEM(object):
                 }.get(mtype, 'error')
 
             return {
-                'MB': round(return_type(mtype) / 1024 / 1024, 2),
-                'GB': round(return_type(mtype) / 1024 / 1024 / 1024, 2),
+                'MB': round(return_type(mtype) / (1024 ** 2), 2),
+                'GB': round(return_type(mtype) / (1024 ** 3), 2),
             }.get(unit, 'error')
 
         def get_per(self):
@@ -76,9 +76,9 @@ class SYSTEM(object):
         """
         Description: Get the SWAP usage status.
         """
-        used = psutil.swap_memory().used / 1024 / 1024
-        total = psutil.swap_memory().total / 1024 / 1024
-        free = psutil.swap_memory().free / 1024 / 1024
+        used = psutil.swap_memory().used / (1024 ** 2)
+        total = psutil.swap_memory().total / (1024 ** 2)
+        free = psutil.swap_memory().free / (1024 ** 2)
 
     class NET(object):
         """
@@ -111,7 +111,6 @@ class SYSTEM(object):
         Description: Get information about the block devices.
         """
         disk = psutil.disk_partitions()
-
         def print_list(self):
             """
             Description: Print the information about
@@ -132,16 +131,31 @@ class SYSTEM(object):
             print("-----Device Information-----")
             for i in range(0, len(disk)):
                 result += \
-                    str(" Device:" + str(disk[i].device) + " Mount:" +
-                        str(disk[i].mountpoint) + " Fstype:" +
-                        str(disk[i].fstype) + " Opt: " +
-                        str(optback(disk[i].opts)) + "\n")
+                    str(" Device: " + str(disk[i].device) +
+                        " Mount: " + str(disk[i].mountpoint) +
+                        " Usage: " + str(psutil.disk_usage(disk[i].mountpoint)) +
+                        " Fstype: " + str(disk[i].fstype) +
+                        " Opt: " + str(optback(disk[i].opts)) + "\n")
 
             print(result)
 
+        def get_list(self):
+            disk_list = []
+            disk_part = psutil.disk_partitions()
+            for block in disk_part:
+                disk_list.append({"Device": block.device,
+                                  "MountPoint": block.mountpoint,
+                                  "Per": psutil.disk_usage(block.mountpoint).percent,
+                                  "total": psutil.disk_usage(block.mountpoint).total / (1024 ** 3),
+                                  "used": psutil.disk_usage(block.mountpoint).used / (1024 ** 3),
+                                  "free": psutil.disk_usage(block.mountpoint).free / (1024 ** 3),
+                                  "Fstype": block.fstype
+                                  })
+            return disk_list
+
 
 if __name__ == '__main__':
-        print(SYSTEM().CPU().get_percent())
+        print(SYSTEM().DISK().get_list())
         time.sleep(1)
 
 
