@@ -49,7 +49,7 @@ class SYSTEM(object):
         def get_mem(self, unit, mtype):
             """
             Description: Get the memory usage status.
-            :param unit: Memory unit. e.g: MB, GB
+            :param unit: Memory unit. e.g: MB, GB.
             :param mtype: Memory type. e.g: total, free, used.
             :return: The size of the request type memory.
             """
